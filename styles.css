@@ -151,9 +151,8 @@ main {
   /* gap: 0.9rem; */
 }
 
-.tag {
+a.tag {
   width: fit-content;
-  /* height: fit-content; */
   padding: 0.1rem 1.2rem;
   background-color: var(--color-Yellow);
   border-radius: 0.4rem;
@@ -161,8 +160,12 @@ main {
   font-weight: 800;
 }
 
+a.tag:hover {
+  color: var(--color-gray-950);
+}
+
 @media (min-width: 426px) {
-  .tag {
+  a.tag {
     font-size: 1.4rem;
     padding: 0.25rem 1.25rem;
   }
