@@ -95,14 +95,17 @@ main {
 
   .date {
     font-size: 1.2rem;
+    line-height: 150%;
   }
 
   .title {
     font-size: 2rem;
     font-weight: 800;
+    line-height: 150%;
   }
 
   .description {
+    line-height: 150%;
     font-size: 1.4rem;
     color: var(--color-gray-500);
   }
@@ -110,6 +113,9 @@ main {
 
 @media (min-width: 426px) {
   .blog-preview-card__content {
+    .date {
+      font-size: 1.4rem;
+    }
     .title {
       font-size: 2.4rem;
     }
@@ -151,22 +157,23 @@ main {
   /* gap: 0.9rem; */
 }
 
-a.tag {
+.tag {
   width: fit-content;
-  padding: 0.1rem 1.2rem;
+  padding: 0.4rem 1.2rem;
   background-color: var(--color-Yellow);
   border-radius: 0.4rem;
   font-size: 1.2rem;
   font-weight: 800;
+  line-height: 150%;
 }
 
-a.tag:hover {
+a:hover {
   color: var(--color-gray-950);
 }
 
 @media (min-width: 426px) {
-  a.tag {
+  .tag {
     font-size: 1.4rem;
-    padding: 0.25rem 1.25rem;
+    padding-inline: 1.25rem;
   }
 }
