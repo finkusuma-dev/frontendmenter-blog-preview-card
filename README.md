@@ -13,11 +13,17 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
-      - [How to Setup Local Font](#how-to-setup-local-font)
       - [Applying HTML Semantics](#applying-html-semantics)
-      - [Making Pixel Perfect](#making-pixel-perfect)
+      - [Interactive Elements](#interactive-elements)
+      - [Setup Local Font](#setup-local-font)
+      - [Implementing Responsiveness](#implementing-responsiveness)
+      - [Building Close to The Design](#building-close-to-the-design)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
+      - [HTML Semantic](#html-semantic)
+      - [Setup Local Font](#setup-local-font-1)
+      - [Building Close to The Design](#building-close-to-the-design-1)
+      - [Implementing Responsiveness](#implementing-responsiveness-1)
   - [Author](#author)
   - [Acknowledgments](#acknowledgments)
 
@@ -33,20 +39,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+<img src="./_docs/screenshot.jpg" alt="screenshot" width="400"/>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/finkusuma-dev/frontendmenter-blog-preview-card)
+- Live Site URL: [Add live site URL here](https://finkusuma-dev.github.io/frontendmenter-blog-preview-card)
 
 ## My process
 
@@ -58,16 +56,20 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### What I learned
 
-#### How to Setup Local Font
-
-- There is problem with the static fonts, maybe I have wrong setup. But I must check it, maybe by trying to extract the font weights from the variable font myself.
-
 #### Applying HTML Semantics
 
 - article on card component.
 - time on date
 
-#### Making Pixel Perfect
+#### Interactive Elements
+
+#### Setup Local Font
+
+- There is problem with the static fonts, maybe I have wrong setup. But I must check it, maybe by trying to extract the font weights from the variable font myself.
+
+#### Implementing Responsiveness
+
+#### Building Close to The Design
 
 - Figma inline border has different behavior than the html style.
 - Putting line-height on the body made the elements to have different height than the design. So I must set it on each of the text.
@@ -82,9 +84,23 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
+#### HTML Semantic
+
+- https://fedmentor.dev/posts/html-plan-product-preview/
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+
+#### Setup Local Font
+
 - [@font-face](https://devdocs.io/css/@font-face) & [selecting normal and bold fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight#selecting_normal_and_bold_fonts)
+
+#### Building Close to The Design
+
 - https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values.
 - https://www.joshwcomeau.com/css/pixel-perfection/
+
+#### Implementing Responsiveness
+
+- https://getbootstrap.com/docs/5.0/layout/breakpoints/
 
 <!-- - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
@@ -93,9 +109,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Arifin Kusuma](https://github.com/finkusuma-dev)
+- Frontend Mentor - [@finkusuma-dev](https://www.frontendmentor.io/profile/finkusuma-dev)
+- Twitter - [@finkusuma_dev](https://www.twitter.com/finkusuma_dev)
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
