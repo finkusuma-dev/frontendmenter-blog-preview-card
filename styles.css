@@ -149,8 +149,8 @@ main {
 }
 
 .tags {
-  /* display: flex; */
-  /* gap: 0.9rem; */
+  display: flex;
+  gap: 0.9rem;
 }
 
 .tag {
@@ -162,13 +162,14 @@ main {
   font-weight: 800;
 }
 
-a:hover {
-  color: var(--color-gray-950);
-}
-
 @media (min-width: 426px) {
   .tag {
     font-size: 1.4rem;
     padding-inline: 1.25rem;
   }
+}
+
+a.tag:hover,
+a.tag:visited {
+  color: var(--color-gray-950);
 }
