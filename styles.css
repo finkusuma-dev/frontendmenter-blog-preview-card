@@ -72,7 +72,7 @@ main {
   }
 }
 
-@media (min-width: 426px) {
+@media (min-width: 576px) {
   .blog-preview-card {
     max-width: 38.4rem;
   }
@@ -108,7 +108,7 @@ main {
   }
 }
 
-@media (min-width: 426px) {
+@media (min-width: 576px) {
   .blog-preview-card__content {
     .date {
       font-size: 1.4rem;
@@ -162,7 +162,7 @@ main {
   font-weight: 800;
 }
 
-@media (min-width: 426px) {
+@media (min-width: 576px) {
   .tag {
     font-size: 1.4rem;
     padding-inline: 1.25rem;
