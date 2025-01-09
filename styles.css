@@ -35,9 +35,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   color: var(--color-gray-950);
-}
 
-main {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,6 +43,9 @@ main {
   justify-content: center;
   gap: 1.7rem;
   background-color: var(--color-Yellow);
+}
+
+main {
 }
 
 .blog-preview-card {
