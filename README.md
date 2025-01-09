@@ -13,8 +13,10 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
-      - [Applying HTML Semantics](#applying-html-semantics)
       - [Interactive Elements](#interactive-elements)
+      - [Applying HTML Semantics](#applying-html-semantics)
+        - [`<article>` as Card Component](#article-as-card-component)
+        - [Wrap date with `<time>`](#wrap-date-with-time)
       - [Setup Local Font](#setup-local-font)
       - [Implementing Responsiveness](#implementing-responsiveness)
       - [Building Close to The Design](#building-close-to-the-design)
@@ -22,12 +24,10 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
     - [Useful resources](#useful-resources)
       - [HTML Semantic](#html-semantic)
       - [Setup Local Font](#setup-local-font-1)
-      - [Building Close to The Design](#building-close-to-the-design-1)
       - [Implementing Responsiveness](#implementing-responsiveness-1)
+      - [Building Close to The Design](#building-close-to-the-design-1)
   - [Author](#author)
   - [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -56,25 +56,43 @@ Users should be able to:
 
 ### What I learned
 
-#### Applying HTML Semantics
-
-- article on card component.
-- time on date
-
 #### Interactive Elements
 
+To make **header** element interactive I added anchor to the text element, so the **header** structure inside is: Header > Anchor > Text. While the other 2 elements (**category** and **author**) I used the `anchor` element and gave it a class.
+
+#### Applying HTML Semantics
+
+##### `<article>` as Card Component
+
+At first, I coded the card to use the `article` tag as it adds the semantic. But after reading Grace Show's blog, "How to translate a design into HTML" which also uses another "Card" challenge as a case, I changed the `article` to use only `div`. The blog explained that the Card Component will be used many times on a page, and having too much extra semantic will create more noise and it's not necessary. I wonder if too much semantic is actually annoying for the screen reader users.
+
+##### Wrap date with `<time>`
+
+I found that the `time` tag can be used to wrap date and time. It makes the datetime info readable by the search engine, thus giving a better search results.
+
 #### Setup Local Font
+
+I learnt how to setup font locally.
 
 - There is problem with the static fonts, maybe I have wrong setup. But I must check it, maybe by trying to extract the font weights from the variable font myself.
 
 #### Implementing Responsiveness
+
+To apply responsive style, I utilized bootstrap v5 breakpoints. Using sm breakpoint value (576px) as separator between mobile and desktop designs.
+
+```css
+@media (min-width: 576px) {
+}
+```
+
+Also I added `padding`, so there are spaces on the left and right sides. Look neat when the page is viewed on very small device.
 
 #### Building Close to The Design
 
 - Figma inline border has different behavior than the html style.
 - Putting line-height on the body made the elements to have different height than the design. So I must set it on each of the text.
   After looking at the MDN documentation it's mentioned it's preferred to have line-height without unit. If the line height has a unit (like px, rem, rem, or %), the line height is calculated on the parent then the result passed down to the children. If line-height doesn't have a unit (i.e: 1.5), the value is directly passed down to the children and then calculated there against the children font size.
-- The element dimensions that is shown when we hover on Inspector tab is affected by the Operating System Display Scale. For example, on the design the element's width is 200px. On OS that has display scale 125%, using inspector we will see it's width is not exactly 200px but 200.4px. To make thing normal scale the page to 80%.
+- The element dimensions that is shown when we hover on Inspector tab is affected by the Operating System Display Scale. For example, on the design the element's width is 200px. On OS that has display scale 125%, using inspector we will see it's width is not exactly 200px but 200px. To make thing normal scale the page to 80%.
 
 ### Continued development
 
@@ -93,14 +111,14 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [@font-face](https://devdocs.io/css/@font-face) & [selecting normal and bold fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight#selecting_normal_and_bold_fonts)
 
-#### Building Close to The Design
-
-- https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values.
-- https://www.joshwcomeau.com/css/pixel-perfection/
-
 #### Implementing Responsiveness
 
 - https://getbootstrap.com/docs/5.0/layout/breakpoints/
+
+#### Building Close to The Design
+
+- https://www.joshwcomeau.com/css/pixel-perfection/
+- https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values.
 
 <!-- - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
