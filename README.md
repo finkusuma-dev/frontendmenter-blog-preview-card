@@ -13,9 +13,8 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
-      - [Interactive Elements](#interactive-elements)
       - [Applying HTML Semantics](#applying-html-semantics)
-        - [`<article>` as Card Component](#article-as-card-component)
+        - [`<article>` as Card Wrapper](#article-as-card-wrapper)
         - [Wrap date with `<time>`](#wrap-date-with-time)
       - [Setup Local Font](#setup-local-font)
       - [Implementing Responsiveness](#implementing-responsiveness)
@@ -56,15 +55,11 @@ Users should be able to:
 
 ### What I learned
 
-#### Interactive Elements
-
-To make **header** element interactive I added anchor to the text element, so the **header** structure inside is: Header > Anchor > Text. While the other 2 elements (**category** and **author**) I used the `anchor` element and gave it a class.
-
 #### Applying HTML Semantics
 
-##### `<article>` as Card Component
+##### `<article>` as Card Wrapper
 
-At first, I coded the card to use the `article` tag as it adds the semantic. But after reading Grace Show's blog, "How to translate a design into HTML" which also uses another "Card" challenge as a case, I changed the `article` to use only `div`. The blog explained that the Card Component will be used many times on a page, and having too much extra semantic will create more noise and it's not necessary. I wonder if too much semantic is actually annoying for the screen reader users.
+I coded the card to use the `article` tag to add semantic. But after reading Grace Show's blog, "How to translate a design into HTML" which also uses another "Card" challenge as a case, I changed the `article` to use only `div`. The blog explained that the Card Component will be used many times on a page, and having too much extra semantic will create more noise and not necessary. I wonder if too much semantic is actually annoying for the screen reader users.
 
 ##### Wrap date with `<time>`
 
@@ -72,7 +67,36 @@ I found that the `time` tag can be used to wrap date and time. It makes the date
 
 #### Setup Local Font
 
-I learnt how to setup font locally.
+I learnt how to setup local variable font with this code:
+
+```css
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 500, 800;
+  src: url('./assets/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+}
+```
+
+I also tried setting up the local static fonts with the code below, but the text looked different. The semi-bold weight appeared thicker.
+
+```css
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 500;
+  src: url('./assets/fonts/static/Figtree-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 800;
+  src: url('./assets/fonts/static/Figtree-ExtraBold.ttf') format('truetype');
+}
+```
+
+<img src="./_docs/compare_fonts.jpg" width=500/>
+
+If I looked on the inspector tab > fonts, it was correctly showing 2 fonts:
+
+<img src="./_docs/static_fonts.jpg" width=500/>
 
 - There is problem with the static fonts, maybe I have wrong setup. But I must check it, maybe by trying to extract the font weights from the variable font myself.
 
@@ -85,7 +109,7 @@ To apply responsive style, I utilized bootstrap v5 breakpoints. Using sm breakpo
 }
 ```
 
-Also I added `padding`, so there are spaces on the left and right sides. Look neat when the page is viewed on very small device.
+I also added `padding` so there are spaces on the left and right sides. It looks neat when the page is viewed on very small screen (320px).
 
 #### Building Close to The Design
 
@@ -95,6 +119,11 @@ Also I added `padding`, so there are spaces on the left and right sides. Look ne
 - The element dimensions that is shown when we hover on Inspector tab is affected by the Operating System Display Scale. For example, on the design the element's width is 200px. On OS that has display scale 125%, using inspector we will see it's width is not exactly 200px but 200px. To make thing normal scale the page to 80%.
 
 ### Continued development
+
+- Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is a navigation to another page. So this challange is a bit confusing to me.
+- I don't wrap the image inside a figure element because this is only a component, and the blog list will show many of this component so the image won't relate with the main content of the page. What are your thoughts?
+- I wrap the published date with time tag, is this correct? Is the published date usually implemented this?
+-
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
@@ -106,6 +135,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - https://fedmentor.dev/posts/html-plan-product-preview/
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+- http://html5doctor.com/avoiding-common-html5-mistakes/#figure
 
 #### Setup Local Font
 
