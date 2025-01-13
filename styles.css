@@ -6,16 +6,22 @@
   --shadow: 8px 8px 0px hsl(0, 0%, 0%);
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Figtree';
   font-weight: 500, 800;
   src: url('./assets/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+} */
+
+@font-face {
+  font-family: 'Figtree';
+  font-weight: 500;
+  src: url('./assets/fonts/static/Figtree-SemiBold.ttf') format('truetype');
 }
-/* @font-face {
+@font-face {
   font-family: 'Figtree';
   font-weight: 800;
   src: url('./assets/fonts/static/Figtree-ExtraBold.ttf') format('truetype');
-} */
+}
 
 *,
 *::before,
