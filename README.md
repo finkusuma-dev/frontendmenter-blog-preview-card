@@ -115,7 +115,7 @@ Also I added padding so there are spaces on the left and right sides. It looks n
 
 ##### Figma Strokes vs CSS Borders
 
-There is difference between strokes in Figma and borders in CSS. If we look at blog card properties in Figma design, the blog card has stroke **inside** with the padding of 24px.
+I noteced that strokes in Figma and borders in CSS behave differently. If we look at blog card properties in Figma design, the blog card has stroke **inside** with the padding of 24px.
 
 I tried different values on the CSS padding and also tried CSS border and outline. And these are the pixels to pixels comparison between figma stroke and CSS border (with box-sizing: border-box) or CSS outline.
 
@@ -149,11 +149,11 @@ I tried different values on the CSS padding and also tried CSS border and outlin
 
 Using `box-model`: `border-box`, the CSS `border` takes up space and it's drawn inside the element box. While `outline` doesn't take space and it's drawn outside the element box.
 
-So I use the #2 option, using border instead of outline. But I have to reduce the CSS padding to `23px` so the overall card size match with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
+So, I choose the #2 option, using `border` instead of `outline`. But I need to reduce the CSS `padding` to `23px` so that the overall card size match with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
 
 ##### Line Height Issue
 
-I had issue with the size of text boxes. Despite I set the correct font-family, font-weight, font-size, and line-height, the size of boxes that contain the text are not the same with Figma. After trials and looking at MDN doc [^4], I found out that it is better not to use line-height value with percent as unit.
+I had issue with the size of text boxes. Despite I set the correct font-family, font-weight, font-size, and line-height, the size of boxes that contain the text are not the same with Figma. After trials and looking at MDN doc [^4], I found out that it is better not to use line-height value with the percent as unit.
 
 The reason is that, if we set the `line-height` on the body (and use the percent as unit), the value that is inherited to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they use the parent's line-height.
 
