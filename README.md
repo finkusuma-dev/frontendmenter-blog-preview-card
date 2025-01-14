@@ -165,16 +165,16 @@ I noticed a strange thing when inspecting the box sizes on the inspector tab. So
 
 If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal number. But it only affects elements that we don't explicitly set the size.
 
-For example, I set the blog card's width to `384px`, and I didn't specify the height. On the inspector tab the width was exactly `384px`, but the height was 521.6px. To make it to show round numbers, I must set the page zoom level to 80%, then it showed exactly 522px.
+For example, I set the blog card's width to `384px`, and I didn't specify the height. On the inspector tab the width was exactly `384px`, but the height was 521.6px. To make it to show round numbers, I must set the page zoom level to `80%`, then it showed exactly `522px`.
 
-If we do the calculations it makes sense. 100px in 125% display scale is actually scaled up to 125px. If we scale down the 125px to 80%, it goes back to the normal value of 100px.
+If we do the calculations it makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down the `125px` to `80%`, it goes back to the normal value of `100px`.
 
 ### Continued development
 
 - Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, can be clicked, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
 - I don't use the `figure` element to wrap the image, as this is only a component. The blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
 - Do you wrap published date with the `time` element?
-- I would be thankful if you're willing to read my discoveries especially [Make HTML Result Close to The Design](#make-html-result-close-to-the-design). And I'll appreciate any thoughts or comments.
+- I would appreciate if you're willing to read my discoveries, especially [Make HTML Result Close to The Design](#make-html-result-close-to-the-design). And I would love to hear any feedback or comments.
 
 ### Useful resources
 
