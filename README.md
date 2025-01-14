@@ -19,6 +19,9 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
       - [Setup Local Fonts](#setup-local-fonts)
       - [Implementing Responsiveness](#implementing-responsiveness)
       - [Developing Close to The Design](#developing-close-to-the-design)
+        - [Figma Border vs CSS Border](#figma-border-vs-css-border)
+        - [Line Height Issue](#line-height-issue)
+        - [Box Size Decimal Value on The Browser Inspector](#box-size-decimal-value-on-the-browser-inspector)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
@@ -63,7 +66,7 @@ I found that the `time` tag can be used to wrap date and time. It makes the date
 
 #### Setup Local Fonts
 
-I learnt how to setup local variable font with this code:
+I learned how to setup local variable font with this code:
 
 ```css
 @font-face {
@@ -73,7 +76,7 @@ I learnt how to setup local variable font with this code:
 }
 ```
 
-I also tried setting up the local static fonts with the code below, but the text looked different. The semi-bold weight appeared thicker.
+I also tried setting up the local static fonts, but the text looked different. The semi-bold weight appeared thicker.
 
 ```css
 @font-face {
@@ -111,9 +114,51 @@ I also added padding so there are spaces on the left and right sides. It looks n
 
 #### Developing Close to The Design
 
-- Figma inline border has different behavior than the html style.
+##### Figma Border vs CSS Border
+
+I found that there is difference between how border in Figma behaves vs border in CSS. If we look at Blog card properties it has border **inside** with the padding of 24px.
+
+And these are the comparations between figma border and CSS border (border-box)/outline:
+
+1. ```css
+   border: 0.1rem solid var(--color-gray-950);
+   padding: 2.4rem;
+   ```
+
+    <img src="./_docs/border_pad24.jpg" width="200"/>
+
+2. ```css
+   border: 0.1rem solid var(--color-gray-950);
+   padding: 2.3rem;
+   ```
+
+    <img src="./_docs/border_pad23.jpg" width="200"/>
+
+3. ```css
+   outline: 0.1rem solid var(--color-gray-950);
+   padding: 2.3rem;
+   ```
+
+    <img src="./_docs/outline_pad23.jpg" width="200"/>
+
+4. ```css
+   outline: 0.1rem solid var(--color-gray-950);
+   padding: 2.4rem;
+   ```
+
+    <img src="./_docs/outline_pad24.jpg" width="200"/>
+
+Using `box-model = border-box`, the CSS `border` takes up space and it's drawn inside the element. While `outline` doesn't take space and it's drawn outside the element.
+
+I think the most similar is the #2 option, using border instead of outline. But we have to reduce the CSS padding to `23px` so that the overall card size is similar to Figma.
+
+##### Line Height Issue
+
 - Putting line-height on the body made the elements to have different height than the design. So I must set it on each of the text.
   After looking at the MDN documentation it's mentioned it's preferred to have line-height without unit. If the line height has a unit (like px, rem, rem, or %), the line height is calculated on the parent then the result passed down to the children. If line-height doesn't have a unit (i.e: 1.5), the value is directly passed down to the children and then calculated there against the children font size.
+
+##### Box Size Decimal Value on The Browser Inspector
+
 - The element dimensions that is shown when we hover on Inspector tab is affected by the Operating System Display Scale. For example, on the design the element's width is 200px. On OS that has display scale 125%, using inspector we will see it's width is not exactly 200px but 200px. To make thing normal scale the page to 80%.
 
 ### Continued development
@@ -158,3 +203,15 @@ This is where you can give a hat tip to anyone who helped you out on this projec
 [^3]: `https://html5doctor.com/avoiding-common-html5-mistakes/#figure`.
 [^4]: `https://getbootstrap.com/docs/5.0/layout/breakpoints/`.
 [^5]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values.
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
