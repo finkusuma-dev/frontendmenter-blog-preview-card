@@ -18,14 +18,13 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
         - [Wrap date with `time` Element](#wrap-date-with-time-element)
       - [Setup Local Fonts](#setup-local-fonts)
       - [Implementing Responsiveness](#implementing-responsiveness)
-      - [Developing Close to The Design](#developing-close-to-the-design)
-        - [Figma Border vs CSS Border](#figma-border-vs-css-border)
+      - [Make HTML Result Close to The Design](#make-html-result-close-to-the-design)
+        - [Figma Strokes vs CSS Borders](#figma-strokes-vs-css-borders)
         - [Line Height Issue](#line-height-issue)
-        - [Box Size Decimal Value on The Browser Inspector](#box-size-decimal-value-on-the-browser-inspector)
+        - [Box Size Decimal Values on Browser's Inspector](#box-size-decimal-values-on-browsers-inspector)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
-  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -101,24 +100,24 @@ In the inspector tab > fonts, it was correctly showing 2 fonts:
 
 #### Implementing Responsiveness
 
-To apply responsive styles, I utilized bootstrap v5 breakpoints [^4]. Using sm breakpoint value (576px) as separator between mobile and desktop designs.
+To apply responsive styles, I utilized bootstrap v5 breakpoints [^3]. Using **sm** breakpoint value (576px) as separator between mobile and desktop designs.
 
 ```css
 @media (min-width: 576px) {
 }
 ```
 
-I also added padding so there are spaces on the left and right sides. It looks neat when the page is viewed on very small screen (320px).
+Also I added padding so there are spaces on the left and right sides. It looks neat on very small screen (320px).
 
 <img src="./_docs/padding.jpg" width="200">
 
-#### Developing Close to The Design
+#### Make HTML Result Close to The Design
 
-##### Figma Border vs CSS Border
+##### Figma Strokes vs CSS Borders
 
-I found that there is difference between how border in Figma behaves vs border in CSS. If we look at Blog card properties it has border **inside** with the padding of 24px.
+There is difference between strokes in Figma and borders in CSS. If we look at blog card properties in Figma design, the blog card has stroke **inside** with the padding of 24px.
 
-And these are the comparations between figma border and CSS border (border-box)/outline:
+I tried different values on the CSS padding and also tried CSS border and outline. And these are the pixels to pixels comparison between figma stroke and CSS border (with box-sizing: border-box) or CSS outline.
 
 1. ```css
    border: 0.1rem solid var(--color-gray-950);
@@ -148,36 +147,42 @@ And these are the comparations between figma border and CSS border (border-box)/
 
     <img src="./_docs/outline_pad24.jpg" width="200"/>
 
-Using `box-model = border-box`, the CSS `border` takes up space and it's drawn inside the element. While `outline` doesn't take space and it's drawn outside the element.
+Using `box-model`: `border-box`, the CSS `border` takes up space and it's drawn inside the element box. While `outline` doesn't take space and it's drawn outside the element box.
 
-I think the most similar is the #2 option, using border instead of outline. But we have to reduce the CSS padding to `23px` so that the overall card size is similar to Figma.
+So I use the #2 option, using border instead of outline. But I have to reduce the CSS padding to `23px` so the overall card size match with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
 
 ##### Line Height Issue
 
-- Putting line-height on the body made the elements to have different height than the design. So I must set it on each of the text.
-  After looking at the MDN documentation it's mentioned it's preferred to have line-height without unit. If the line height has a unit (like px, rem, rem, or %), the line height is calculated on the parent then the result passed down to the children. If line-height doesn't have a unit (i.e: 1.5), the value is directly passed down to the children and then calculated there against the children font size.
+I had issue with the size of text boxes. Despite I set the correct font-family, font-weight, font-size, and line-height, the size of boxes that contain the text are not the same with Figma. After trials and looking at MDN doc [^4], I found out that it is better not to use line-height value with percent as unit.
 
-##### Box Size Decimal Value on The Browser Inspector
+The reason is that, if we set the `line-height` on the body (and use the percent as unit), the value that is inherited to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they use the parent's line-height.
 
-- The element dimensions that is shown when we hover on Inspector tab is affected by the Operating System Display Scale. For example, on the design the element's width is 200px. On OS that has display scale 125%, using inspector we will see it's width is not exactly 200px but 200px. To make thing normal scale the page to 80%.
+If we want to use dynamic value on the line height, use it without any units. So instead of `150%`, we should use `1.5` instead.
+
+##### Box Size Decimal Values on Browser's Inspector
+
+I noticed a strange thing when inspecting the box sizes on the inspector tab. Some element dimensions have decimal number. And I discovered that it's related with the Operating System's Display Scale.
+
+If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal number. But it only affects elements that we don't explicitly set the size.
+
+For example, I set the blog card's width to `384px`, and I didn't specify the height. On the inspector tab the width was exactly `384px`, but the height was 521.6px. To make it to show round numbers, I must set the page zoom level to 80%, then it showed exactly 522px.
+
+If we do the calculations it makes sense. 100px in 125% display scale is actually scaled up to 125px. If we scale down the 125px to 80%, it goes back to the normal value of 100px.
 
 ### Continued development
 
-- Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is a navigation to another page. So this challange is a bit confusing to me.
-- After reading this blog [^3], I don't wrap the image inside a figure element as this is only a component. The blog will list many of this component so the image won't relate with the main content of the page. What are your thoughts?
-- Is the published date usually wrapped with the `time` element?
--
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, can be clicked, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
+- I don't use the `figure` element to wrap the image, as this is only a component. The blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
+- Do you wrap published date with the `time` element?
+- I would be thankful if you're willing to read my discoveries especially [Make HTML Result Close to The Design](#make-html-result-close-to-the-design). And I'll appreciate any thoughts or comments.
 
 ### Useful resources
 
 Resources that are directly mentioned are listed in the footnote of this README.
 
 - [@font-face](https://devdocs.io/css/@font-face) & [selecting normal and bold fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight#selecting_normal_and_bold_fonts) - How to setup local fonts.
-- https://www.joshwcomeau.com/css/pixel-perfection/ - This blog gives me general principe of how to make the result looks closely similar to the design.
+- https://html5doctor.com/avoiding-common-html5-mistakes/#figure - Why we should avoid using `figure` elements at all time.
+- https://www.joshwcomeau.com/css/pixel-perfection/ - This blog gives me general ideas of how to make the html result looks closely similar to the design.
 
 <!-- - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
@@ -190,28 +195,13 @@ Resources that are directly mentioned are listed in the footnote of this README.
 - Frontend Mentor - [@finkusuma-dev](https://www.frontendmentor.io/profile/finkusuma-dev)
 - Twitter - [@finkusuma_dev](https://www.twitter.com/finkusuma_dev)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
+<!-- ## Acknowledgments
 
 This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
 
-[^1]: `https://fedmentor.dev/posts/html-plan-product-preview/`.
-[^2]: `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time`.
-[^3]: `https://html5doctor.com/avoiding-common-html5-mistakes/#figure`.
-[^4]: `https://getbootstrap.com/docs/5.0/layout/breakpoints/`.
-[^5]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values.
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
+[^1]: https://fedmentor.dev/posts/html-plan-product-preview/. Grace Show's blog, giving example of how to translate a design into HTML.
+[^2]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time. MDN HTML `time` element documentation.
+[^3]: https://getbootstrap.com/docs/5.0/layout/breakpoints/. Bootstrap v5.0 breakpoints.
+[^4]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values. MDN CSS `line-height` property documentation
