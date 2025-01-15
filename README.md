@@ -21,7 +21,7 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
       - [Make HTML Result Close to The Design](#make-html-result-close-to-the-design)
         - [🟠 Figma Strokes vs CSS Borders](#-figma-strokes-vs-css-borders)
         - [🟠 Line Height Issue](#-line-height-issue)
-        - [🟠 Box Dimensions Decimal Numbers on Browser's Inspector](#-box-dimensions-decimal-numbers-on-browsers-inspector)
+        - [🟠 Browser's Inspector Shows Dimensions With Decimal Numbers](#-browsers-inspector-shows-dimensions-with-decimal-numbers)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
@@ -157,7 +157,7 @@ While `outline` doesn't take space and it's drawn outside the element's box. Alt
 
 <img src="./_docs/box_outline.jpg" width="400">
 
-I choose to use `border` and reduce the `padding` to `23px` so that the overall card size matches with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
+In the end, I choose to use `border` and reduce the `padding` to `23px` so that the overall card size matches with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
 
 ##### 🟠 Line Height Issue
 
@@ -167,9 +167,9 @@ The reason is, if we use the percent as unit and set the `line-height` somewhere
 
 If we want to use dynamic value on the line height, use it without percent. So use `1.5` instead of `150%`.
 
-##### 🟠 Box Dimensions Decimal Numbers on Browser's Inspector
+##### 🟠 Browser's Inspector Shows Dimensions With Decimal Numbers
 
-I noticed a strange thing: When inspecting the elements' box on the inspector tab, Some element dimensions have decimal numbers. And I discovered that it is related with the Operating System's Display Scale.
+I noticed a strange thing: When inspecting the elements on the inspector tab, Some element dimensions have decimal numbers. And I discovered that it is related with the Operating System's Display Scale.
 
 If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal numbers. But it only affects elements that we don't explicitly set the size.
 
