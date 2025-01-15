@@ -25,6 +25,7 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -185,7 +186,7 @@ If we do the calculations it kind of makes sense. `100px` in `125%` display scal
 - Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, hover, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
 - I used `figure` element to wrap the image, but I removed it. As this is only a component, and the blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
 - Do you wrap published date with the `time` element?
-- I tried using BEM together with nested CSS. Do you recommend this method for more complex challenge?
+- I'm using BEM together with nested CSS. Do you recommend this method for more complex challenge?
 - Feels free to give suggestions if you see some of my code needs improvements.
 - And also I would greatly appreciate if you could review and give feedback (or comments) to my process and discoveries on this challenge.
 
@@ -208,8 +209,11 @@ If we do the calculations it kind of makes sense. `100px` in `125%` display scal
 - Frontend Mentor - [@finkusuma-dev](https://www.frontendmentor.io/profile/finkusuma-dev)
 - Twitter - [@finkusuma_dev](https://www.twitter.com/finkusuma_dev)
 
-<!-- ## Acknowledgments
+## Acknowledgments
 
+Thanks to discord member @Darkstar, who helped me discovering the static font issue in the challenge.
+
+<!--
 This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
