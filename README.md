@@ -14,14 +14,14 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
       - [Applying HTML Semantics](#applying-html-semantics)
-        - [`article` Element as Card Wrapper](#article-element-as-card-wrapper)
-        - [Wrap date with `time` Element](#wrap-date-with-time-element)
+        - [🟠 `article` Element as Card Wrapper](#-article-element-as-card-wrapper)
+        - [🟠 Wrap date with `time` Element](#-wrap-date-with-time-element)
       - [Setup Local Fonts](#setup-local-fonts)
       - [Implementing Responsiveness](#implementing-responsiveness)
       - [Make HTML Result Close to The Design](#make-html-result-close-to-the-design)
-        - [Figma Strokes vs CSS Borders](#figma-strokes-vs-css-borders)
-        - [Line Height Issue](#line-height-issue)
-        - [Box Size Decimal Values on Browser's Inspector](#box-size-decimal-values-on-browsers-inspector)
+        - [🟠 Figma Strokes vs CSS Borders](#-figma-strokes-vs-css-borders)
+        - [🟠 Line Height Issue](#-line-height-issue)
+        - [🟠 Box Size Decimal Values on Browser's Inspector](#-box-size-decimal-values-on-browsers-inspector)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
@@ -55,13 +55,13 @@ Users should be able to:
 
 #### Applying HTML Semantics
 
-##### `article` Element as Card Wrapper
+##### 🟠 `article` Element as Card Wrapper
 
-I coded the card to use the `article` tag to add semantic. But after reading Grace Show's blog [^1] which also uses another "Card" challenge as a case, I changed the `article` to use only `div`. The blog explained that the Card Component will be used many times on a page, and having too much extra semantic will create more noise and not necessary. I wonder if too much semantic is actually annoying for the screen reader users.
+I coded the card to use the `article` tag to add semantic. But after reading Grace Snow's blog [^1] which also uses another "Card" challenge as a case, I changed the `article` to use only `div`. The blog explained that the Card Component will be used many times on a page, and having too much extra semantic will create more noise and not necessary. I wonder if too much semantic is actually annoying for the screen reader users.
 
-##### Wrap date with `time` Element
+##### 🟠 Wrap date with `time` Element
 
-I found that the `time` tag can be used to wrap date and time. It makes the datetime info readable by the search engine, thus giving a better search results. [^2]
+I found that the `time` element can be used to wrap date and time. It makes the datetime info readable by the search engine, thus giving a better search results. [^2]
 
 #### Setup Local Fonts
 
@@ -113,11 +113,11 @@ Also I added padding so there are spaces on the left and right sides. It looks n
 
 #### Make HTML Result Close to The Design
 
-##### Figma Strokes vs CSS Borders
+##### 🟠 Figma Strokes vs CSS Borders
 
-I noteced that strokes in Figma and borders in CSS behave differently. If we look at blog card properties in Figma design, the blog card has stroke **inside** with the padding of 24px.
+I noticed that strokes in Figma and borders in CSS behave differently. If we look at blog card properties in Figma design, the blog card has stroke **inside** with the padding of `24px`.
 
-I tried different values on the CSS padding and also tried CSS border and outline. And these are the pixels to pixels comparison between figma stroke and CSS border (with box-sizing: border-box) or CSS outline.
+I tried different values on the CSS padding and also tried CSS border and outline. And these are the pixel to pixel comparison between figma stroke and CSS border (with box-sizing: border-box) or CSS outline.
 
 1. ```css
    border: 0.1rem solid var(--color-gray-950);
@@ -147,27 +147,36 @@ I tried different values on the CSS padding and also tried CSS border and outlin
 
     <img src="./_docs/outline_pad24.jpg" width="200"/>
 
-Using `box-model`: `border-box`, the CSS `border` takes up space and it's drawn inside the element box. While `outline` doesn't take space and it's drawn outside the element box.
+The difference using `border` and `outline`: the `border` takes up space and it's drawn inside the element's box.
 
-So, I choose the #2 option, using `border` instead of `outline`. But I need to reduce the CSS `padding` to `23px` so that the overall card size match with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
+<img src="./_docs/box_border.jpg" width="400">
 
-##### Line Height Issue
+While `outline` doesn't take space and it's drawn outside the element's box. Altough we see in the inspector that the box displays the same size with the design, the actual box size is bigger.
+
+<img src="./_docs/box_outline.jpg" width="400">
+
+I choose to use `border` and reduce the `padding` to `23px` so that the overall card size matches with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
+
+##### 🟠 Line Height Issue
 
 I had issue with the size of text boxes. Despite I set the correct font-family, font-weight, font-size, and line-height, the size of boxes that contain the text are not the same with Figma. After trials and looking at MDN doc [^4], I found out that it is better not to use line-height value with the percent as unit.
 
-The reason is that, if we set the `line-height` on the body (and use the percent as unit), the value that is inherited to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they use the parent's line-height.
+The reason is, if we use the percent as unit and set the `line-height` somewhere up (the body), the value that is passed down to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they're using the parent's line-height.
 
-If we want to use dynamic value on the line height, use it without any units. So instead of `150%`, we should use `1.5` instead.
+If we want to use dynamic value on the line height, use it without percent. So use `1.5` instead of `150%`.
 
-##### Box Size Decimal Values on Browser's Inspector
+##### 🟠 Box Size Decimal Values on Browser's Inspector
 
-I noticed a strange thing when inspecting the box sizes on the inspector tab. Some element dimensions have decimal number. And I discovered that it's related with the Operating System's Display Scale.
+I noticed a strange thing: when inspecting the box sizes on the inspector tab. Some element dimensions have decimal numbers. And I discovered that it's related with the Operating System's Display Scale.
 
-If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal number. But it only affects elements that we don't explicitly set the size.
+If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal numbers. But it only affects elements that we don't explicitly set the size.
 
-For example, I set the blog card's width to `384px`, and I didn't specify the height. On the inspector tab the width was exactly `384px`, but the height was 521.6px. To make it to show round numbers, I must set the page zoom level to `80%`, then it showed exactly `522px`.
+For example, I set the blog card's width to `384px`, and I didn't specify the height, and I use `125%` display scale. On the inspector tab, the width was exactly `384px`, but the height was `521.6px`. To make the height show round numbers, I must set the page zoom level to `80%`, then it showed exactly `522px`.
 
-If we do the calculations it makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down the `125px` to `80%`, it goes back to the normal value of `100px`.
+If we do the calculations it kind of makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down `125px` to `80%`, it goes back to the normal value of `100px`. While actually, I don't have any clue at all about why it shows decimal numbers in the first place, at least I can configure the browser to show the exact numbers like in the design.
+
+<img src="./_docs/box_with_zoom100.jpg" width="400"/>
+<img src="./_docs/box_with_zoom80.jpg" width="400"/>
 
 ### Continued development
 
@@ -201,7 +210,7 @@ This is where you can give a hat tip to anyone who helped you out on this projec
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
 
-[^1]: https://fedmentor.dev/posts/html-plan-product-preview/. Grace Show's blog, giving example of how to translate a design into HTML.
+[^1]: https://fedmentor.dev/posts/html-plan-product-preview/. Grace Snow's blog, giving example of how to translate a design into HTML.
 [^2]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time. MDN HTML `time` element documentation.
 [^3]: https://getbootstrap.com/docs/5.0/layout/breakpoints/. Bootstrap v5.0 breakpoints.
 [^4]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values. MDN CSS `line-height` property documentation
