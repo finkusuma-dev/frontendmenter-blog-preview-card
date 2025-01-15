@@ -50,6 +50,12 @@ body {
   position: relative;
 }
 
+@media (min-width: 576px) {
+  .container {
+    padding-inline: 1rem;
+  }
+}
+
 main {
 }
 
