@@ -21,7 +21,7 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
       - [Make HTML Result Close to The Design](#make-html-result-close-to-the-design)
         - [🟠 Figma Strokes vs CSS Borders](#-figma-strokes-vs-css-borders)
         - [🟠 Line Height Issue](#-line-height-issue)
-        - [🟠 Box Size Decimal Values on Browser's Inspector](#-box-size-decimal-values-on-browsers-inspector)
+        - [🟠 Box Dimensions Decimal Numbers on Browser's Inspector](#-box-dimensions-decimal-numbers-on-browsers-inspector)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [Author](#author)
@@ -75,13 +75,13 @@ I learned how to setup local variable font with this code:
 }
 ```
 
-I also tried setting up the local static fonts, but the text looked different. The semi-bold weight appeared thicker.
+I also tried to use the local static fonts with this code:
 
 ```css
 @font-face {
   font-family: 'Figtree';
   font-weight: 500;
-  src: url('./assets/fonts/static/Figtree-SemiBold.ttf') format('truetype');
+  src: url('./assets/fonts/static/Figtree-Medium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Figtree';
@@ -90,13 +90,15 @@ I also tried setting up the local static fonts, but the text looked different. T
 }
 ```
 
-Setup with variable font on the left, and static fonts on the right:
-
-<img src="./_docs/compare_fonts.jpg" width="500"/>
-
-In the inspector tab > fonts, it was correctly showing 2 fonts:
-
-<img src="./_docs/static_fonts.jpg" width="500"/>
+> [!Note]
+>
+> The challenge is currently has the wrong static font asset for `500` weight. Instead of using `Figtree-SemiBold.ttf` which will make the `500` weight text to appear thicker, download the `Figtree-Medium.ttf` directly from the Google Fonts.
+>
+> I already posted the issue on discord and still waiting for the developers to fix it.
+>
+> This is the comparison if you setup the `Figtree-SemiBold.ttf` as `500` weight. The variable font on the left, and static fonts on the right:
+>
+> <img src="./_docs/compare_fonts.jpg" width="500"/>
 
 #### Implementing Responsiveness
 
@@ -107,7 +109,7 @@ To apply responsive styles, I utilized bootstrap v5 breakpoints [^3]. Using **sm
 }
 ```
 
-Also I added padding so there are spaces on the left and right sides. It looks neat on very small screen (320px).
+Also I added padding so there are spaces on the left and right sides. It looks neat on very small screen size (320px).
 
 <img src="./_docs/padding.jpg" width="200">
 
@@ -151,7 +153,7 @@ The difference using `border` and `outline`: the `border` takes up space and it'
 
 <img src="./_docs/box_border.jpg" width="400">
 
-While `outline` doesn't take space and it's drawn outside the element's box. Altough we see in the inspector that the box displays the same size with the design, the actual box size is bigger.
+While `outline` doesn't take space and it's drawn outside the element's box. Although we see in the inspector that the box displays the same dimensions with the design, the actual box size is bigger.
 
 <img src="./_docs/box_outline.jpg" width="400">
 
@@ -165,33 +167,34 @@ The reason is, if we use the percent as unit and set the `line-height` somewhere
 
 If we want to use dynamic value on the line height, use it without percent. So use `1.5` instead of `150%`.
 
-##### 🟠 Box Size Decimal Values on Browser's Inspector
+##### 🟠 Box Dimensions Decimal Numbers on Browser's Inspector
 
-I noticed a strange thing: when inspecting the box sizes on the inspector tab. Some element dimensions have decimal numbers. And I discovered that it's related with the Operating System's Display Scale.
+I noticed a strange thing: When inspecting the elements' box on the inspector tab, Some element dimensions have decimal numbers. And I discovered that it is related with the Operating System's Display Scale.
 
 If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal numbers. But it only affects elements that we don't explicitly set the size.
 
 For example, I set the blog card's width to `384px`, and I didn't specify the height, and I use `125%` display scale. On the inspector tab, the width was exactly `384px`, but the height was `521.6px`. To make the height show round numbers, I must set the page zoom level to `80%`, then it showed exactly `522px`.
 
-If we do the calculations it kind of makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down `125px` to `80%`, it goes back to the normal value of `100px`. While actually, I don't have any clue at all about why it shows decimal numbers in the first place, at least I can configure the browser to show the exact numbers like in the design.
+If we do the calculations it kind of makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down `125px` to `80%`, it goes back to the normal value of `100px`. While actually, I don't have any clue at all about why it shows decimal numbers in the first place, at least I can make the browser to show the exact numbers like in the design.
 
 <img src="./_docs/box_with_zoom100.jpg" width="400"/>
 <img src="./_docs/box_with_zoom80.jpg" width="400"/>
 
 ### Continued development
 
-- Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, can be clicked, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
-- I don't use the `figure` element to wrap the image, as this is only a component. The blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
+- Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, hover, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
+- I used `figure` element to wrap the image, but I removed it. As this is only a component, and the blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
 - Do you wrap published date with the `time` element?
-- I would appreciate if you're willing to read my discoveries, especially [Make HTML Result Close to The Design](#make-html-result-close-to-the-design). And I would love to hear any feedback or comments.
+- I welcome any suggestions or improvements for the rest of the code.
+- And I would appreciate if you're willing to read my process and discoveries. Any feedback and comments I'll appreciate it.
 
 ### Useful resources
-
-Resources that are directly mentioned are listed in the footnote of this README.
 
 - [@font-face](https://devdocs.io/css/@font-face) & [selecting normal and bold fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight#selecting_normal_and_bold_fonts) - How to setup local fonts.
 - https://html5doctor.com/avoiding-common-html5-mistakes/#figure - Why we should avoid using `figure` elements at all time.
 - https://www.joshwcomeau.com/css/pixel-perfection/ - This blog gives me general ideas of how to make the html result looks closely similar to the design.
+
+(Resources that are directly mentioned in the sections before "Useful resources" are listed in the footnote of this README.)
 
 <!-- - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept. -->
