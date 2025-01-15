@@ -185,6 +185,7 @@ If we do the calculations it kind of makes sense. `100px` in `125%` display scal
 - Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, hover, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
 - I used `figure` element to wrap the image, but I removed it. As this is only a component, and the blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
 - Do you wrap published date with the `time` element?
+- On this challenge I tried using BEM together with nested CSS. Do recommend this method for more complex challenge?
 - I welcome any suggestions or improvements for the rest of the code.
 - And I would appreciate if you're willing to read my process and discoveries. Any feedback and comments I'll appreciate it.
 
