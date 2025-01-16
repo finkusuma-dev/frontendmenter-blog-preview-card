@@ -150,15 +150,17 @@ I tried different values on the CSS padding and also tried CSS border and outlin
 
     <img src="./_docs/outline_pad24.jpg" width="200"/>
 
-The `border` takes up space and it's drawn inside the element's box.
+As you may notice, the result of #1 (using `border` and `24px` padding) looks the same with #4 (using `outline` and `24px` padding). But they're different:
+
+The **borders** are drawn inside the element's box, so the overall card size includes the borders.
 
 <img src="./_docs/box_border.jpg" width="400">
 
-While `outline` doesn't take space and it's drawn outside the element's box. Although we see in the inspector that the box displays the same dimensions with the design, the actual box size is bigger.
+While the **outlines** are drawn outside the element's box, so the overall card size does not include the **outlines**. We can see in the inspector, the dimension of the box without the outlines. Maybe we can choose this option if in Figma the stroke property position is **outside**.
 
 <img src="./_docs/box_outline.jpg" width="400">
 
-I choose to use `border` and reduce the `padding` to `23px` so the overall card size matches with the design. If I use `24px` for padding, it would make the card bigger for 2 pixels on horizontal and on vertical.
+So, I choose to use `border` and reduce the `padding` to `23px` so the overall card size matches with the design. If I use `24px` for padding (Like it's set on Figma design), it would make the card bigger for 2 pixels on horizontal and on vertical.
 
 ##### 🔷 Line Height Issue
 
@@ -185,7 +187,7 @@ If we do the calculations it kind of makes sense. `100px` in `125%` display scal
 
 - Usually when I saw a card component, it didn't have interactive elements inside the card. But the card element itself as a whole is interactive (can get focus, hover, has animation, etc). So this challange is a bit confusing to me. But nevertheless, I did the challenge by adding the anchor element inside the heading, wrapping the text.
 - I used `figure` element to wrap the image, but I removed it. As this is only a component, and the blog page will list many of this components so the image won't relate with the main content of the page. What is you opinion?
-- Do you wrap published date with the `time` element?
+- Is wrapping published date with the `time` element a best practice?
 - I'm using BEM together with nested CSS. Do you recommend this method for more complex challenge?
 - Feels free to give suggestions if you see some of my code needs improvements.
 - And also I would greatly appreciate if you could review and give feedback (or comments) to my process and discoveries on this challenge.
