@@ -41,7 +41,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/finkusuma-dev/frontendmenter-blog-preview-card](https://github.com/finkusuma-dev/frontendmenter-blog-preview-card)
+- Solution URL: [https://www.frontendmentor.io/solutions/i-discovered-a-lot-of-things-on-this-blog-preview-card-challenge-pSdptSJhP1](https://www.frontendmentor.io/solutions/i-discovered-a-lot-of-things-on-this-blog-preview-card-challenge-pSdptSJhP1)
 - Live Site URL: [https://finkusuma-dev.github.io/frontendmenter-blog-preview-card](https://finkusuma-dev.github.io/frontendmenter-blog-preview-card)
 
 ## My process
