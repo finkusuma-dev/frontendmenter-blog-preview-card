@@ -196,7 +196,7 @@ h2 {
 }
 ```
 
-Or you can set `150%` on the children elements. Both of these approaches work, but the weakness is you need to set it on all of the affected children.
+Or you can set `150%` on the children elements. Both of these approaches work, but the weakness is you need to set it on all affected children.
 
 ```css
 body {
