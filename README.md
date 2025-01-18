@@ -76,7 +76,7 @@ I learned how to setup local variable font with this code:
 }
 ```
 
-I also tried to use the local static fonts with this code:
+And setup local static fonts with this code:
 
 ```css
 @font-face {
@@ -156,19 +156,61 @@ The **borders** are drawn inside the element's box, so the overall card size inc
 
 <img src="./_docs/box_border.jpg" width="400">
 
-While the **outlines** are drawn outside the element's box, so the overall card size does not include the **outlines**. We can see in the inspector, the dimension of the box without the outlines. Maybe we can choose this option if in Figma the stroke property position is **outside**.
+While the **outlines** are drawn outside the element's box, so the overall card size does not include the **outlines**. We can see in the inspector, the dimension of the box without the outlines. We can choose this option if in Figma the stroke property position is **outside**.
 
 <img src="./_docs/box_outline.jpg" width="400">
 
-So, I choose to use `border` and reduce the `padding` to `23px` so the overall card size matches with the design. If I use `24px` for padding (Like it's set on Figma design), it would make the card bigger for 2 pixels on horizontal and on vertical.
+So, I choose to use `border` and reduce the `padding` to `23px` to make the overall card size matches with the design. If I use `24px` for padding (Like it's on Figma design), it would make the card bigger for 2 pixels on horizontal and on vertical.
 
 ##### 🔷 Line Height Issue
 
 I had issue with the size of text boxes. Despite I set the correct font-family, font-weight, font-size, and line-height, the size of boxes that contain the text are not the same with Figma. After trials and looking at MDN doc [^4], I found out that it is better not to use line-height value with the percent as unit.
 
-The reason is, if we use the percent as unit and set the `line-height` somewhere up (the body), the value that is passed down to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they're using the parent's line-height.
+The reason is, if we use the percent as unit and set the `line-height` somewhere up (in the body), the value that is passed down to the children is not the percent value itself, but the calculated value. So the children that have different font size, their line height seems off because they're using the parent's line-height.
 
-If we want to use dynamic value on the line height, use it without percent. So `1.5` instead of `150%`.
+```css
+body {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+h2 {
+  font-size: 24px;
+}
+```
+
+<img src="./_docs/lineHeight150%25.jpg" width="400"/>
+
+(Note: The correct line height: 150% of 24px = 36px)
+
+If you want to use dynamic value on the line height correctly, use it without percent. So `1.5` instead of `150%`.
+
+```css
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 24px;
+}
+```
+
+Or you can set `150%` on the children elements. Both of these approaches work, but the weakness is you need to set it on all of the affected children.
+
+```css
+body {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 150%;
+}
+```
+
+<img src="./_docs/lineHeight1.5.jpg" width="400"/>
 
 ##### 🔷 Browser's Inspector Shows Dimensions With Decimal Numbers
 
@@ -176,12 +218,14 @@ I noticed a strange thing: When inspecting the elements on the inspector tab, So
 
 If we change the OS Display Scale, for example `125%`, the element's box dimensions can appear to have decimal numbers. But it only affects elements that we don't explicitly set the size.
 
-For example, I set the blog card's width to `384px`, and I didn't specify the height, and I use `125%` display scale. On the inspector tab, the width was exactly `384px`, but the height was `521.6px`. To make the height show round numbers, I must set the page zoom level to `80%`, then it showed exactly `522px`.
+For example, I set the blog card's width to `384px`, and I didn't specify the height, and I use `125%` display scale. On the inspector tab, the width was exactly `384px`, but the height was `521.6px`. To make the height shows round numbers, I set the page zoom level to `80%`, then it showed exactly `522px`.
 
 If we do the calculations it kind of makes sense. `100px` in `125%` display scale is actually scaled up to `125px`. If we scale down `125px` to `80%`, it goes back to the normal value of `100px`. While actually, I don't have any clue why it shows decimal numbers in the first place. At least I can feel relieve when the browser showing the exact numbers like in the design.
 
 <img src="./_docs/box_with_zoom100.jpg" width="400"/>
 <img src="./_docs/box_with_zoom80.jpg" width="400"/>
+
+(Note: Only tested it in on Linux, haven't tested it on other OS.)
 
 ### Continued development
 
